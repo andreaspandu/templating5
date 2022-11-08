@@ -21,6 +21,6 @@ urlpatterns = [
     # path('updatedetail', views.updatedetail, name='updatedetail'),
     path('updatedetail<str:id>', views.updatedetail, name='updatedetail' ),
     path('deletedetail<str:id>', views.deletedetail, name='deletedetail'),
-    path('dashboard', views.dashboard, name='dashboard'),
+    path('invoice/<str:id>', views.invoice, name='invoice'),
     path('invoice', views.invoice, name='invoice')
 ]

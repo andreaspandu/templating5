@@ -163,6 +163,7 @@
                                     {% endfor %}
                                 </td>
                                 <td>
+                                    <a href="{% url 'invoice' item.0.idpemesanan %}" class="btn btn-success">Cetak Invoice</a>
                                     <a href="{% url 'perbarui' item.0.idpemesanan %}" class="btn btn-info">
                                         Update
                                     </a>

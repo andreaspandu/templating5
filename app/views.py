@@ -5,19 +5,14 @@ from . import models
 from django.http import HttpResponse
 
 # Create your views here.
+
+
 def home(request):
-    return render(request, 'index.html')
-
-def dashboard(request):
-    totalpelanggan = models.pemesanan.objects.all.count()
-    totalharga = models.layanan.harga
+    totalpelanggan = models.pemesanan.objects.all().count()
     return render(request, 'index.html', {
-        'totalpelanggan' : totalpelanggan,
-        'totalharga' : totalharga
-
+        'jumlah' : totalpelanggan,
     })
-def invoice(request):
-    return render(request, 'invoice')
+
 
 def updatedetail(request, id):
     detail = models.detaillayanan.objects.get(iddetaillayanan=id)
@@ -44,6 +39,13 @@ def deletedetail(request, id):
     deletedetail.delete()
     return redirect('index')
 
+def invoice(request, id):
+    idinvoice = models.pemesanan.objects.get(idpemesanan = id)
+    if request.method == 'GET':
+        return render(request, 'invoice.html',{
+            'idinvoice' : idinvoice,
+    })
+
 def perbaruilayanan(request, id):
     layananobj = models.layanan.objects.get(idlayanan = id)
     layanan_obj = models.layanan.objects.all()
@@ -53,9 +55,7 @@ def perbaruilayanan(request, id):
             'layananobj' : layanan_obj
         })
     else:
-        # idlayanan = request.POST['idlayanan']
-        # getlayanan = models.layanan.objects.get(idlayanan = idlayanan)
-        layananobj.jenislayanan = request.POST['jenislayanan']
+        # idlayananbj.jenislayanan = request.POST['jenislayanan']
         layananobj.harga = request.POST['harga']
         layananobj.save()
         return redirect ('tampillayanan')
