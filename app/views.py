@@ -9,8 +9,10 @@ from django.http import HttpResponse
 
 def home(request):
     totalpelanggan = models.pemesanan.objects.all().count()
+    pendapatan = models.pemesanan.objects.all()
     return render(request, 'index.html', {
         'jumlah' : totalpelanggan,
+        'pendapatan' : pendapatan
     })
 
 
@@ -56,6 +58,7 @@ def perbaruilayanan(request, id):
         })
     else:
         # idlayananbj.jenislayanan = request.POST['jenislayanan']
+        layananobj.jenislayanan = request.POST['jenislayanan']
         layananobj.harga = request.POST['harga']
         layananobj.save()
         return redirect ('tampillayanan')

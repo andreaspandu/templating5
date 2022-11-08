@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- theme meta -->
     <meta name="theme-name" content="focus" />
-    <title>Focus Admin: Creative Admin Dashboard</title>
+    <title>LOSIK Car Wash: Admin Dasboardd</title>
     <!-- ================= Favicon ================== -->
     <!-- Standard -->
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
@@ -43,20 +43,21 @@
                     <div class="logo"><a href="{% url 'home' %}">
                             <!-- <img src="images/logo.png" alt="" /> --><span>LOSIK CAR WASH</span></a></div>
                     <li class="label">Main</li>
-                    <li><a href="{% url 'home' %}"><i class="ti-home"></i> Dashboard</a>
-                    </li>
+                    <li><a href="{% url 'home' %}"><i class="ti-home"></i> Dashboard</a></li>
 
                     <li class="label">Apps</li>
+
                     <li><a href="{% url 'index' %}"><i class="ti-view-list-alt"></i> Daftar Pemesanan </a></li>
                     <li><a href="{% url 'tampillayanan' %}"><i class="ti-view-list-alt"></i> Daftar Layanan</a></li>
                     <li><a href="{% url 'tampilpaket' %}"><i class="ti-view-list-alt"></i> Daftar Paket Layanan</a></li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-files"></i> Invoice <span
-                                class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a href="{% url 'invoice' %}">Basic</a></li>
-                            <li><a href="invoice-editable.html">Editable</a></li>
-                        </ul>
-                    </li>
+                    <li><a class="sidebar-sub-toggle"><i class="ti-user"></i> Admin <span
+                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                <ul>
+                    <li><a href="{% url 'tambahlayanan' %}">Tambah Layanan</a></li>
+                    <li><a href="{% url 'tambahpaket' %}">Tambah Paket Layanan</a></li>
+                    <li><a href="#">Rekap Penjualan</a></li>
+                </ul>
+            </li>
                     
             </div>
         </div>
