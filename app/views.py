@@ -6,10 +6,18 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'index.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    totalpelanggan = models.pemesanan.objects.all.count()
+    totalharga = models.layanan.harga
+    return render(request, 'index.html', {
+        'totalpelanggan' : totalpelanggan,
+        'totalharga' : totalharga
+
+    })
+def invoice(request):
+    return render(request, 'invoice')
 
 def updatedetail(request, id):
     detail = models.detaillayanan.objects.get(iddetaillayanan=id)
