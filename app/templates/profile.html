@@ -102,7 +102,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{% url 'index' %}">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Profile</li>
                                 
                             </ol>
@@ -121,61 +121,24 @@
                     <div class="row">
                       <div class="col-lg-4">
                         <div class="user-photo m-b-30">
-                          <img class="img-fluid" src="images/user-profile.jpg" alt="" />
-                        </div>
-                        <div class="user-work">
-                          <h4>work</h4>
-                          <div class="work-content">
-                            <h3>It Solution </h3>
-                            <p>123, South Mugda</p>
-                            <p>New York, 1214</p>
-                          </div>
-                          <div class="work-content">
-                            <h3>Unix</h3>
-                            <p>123, South Mugda</p>
-                            <p>New York, 1214</p>
-                          </div>
-                        </div>
-                        <div class="user-skill">
-                          <h4>Skill</h4>
-                          <ul>
-                            <li>
-                              <a href="#">Branding</a>
-                            </li>
-                            <li>
-                              <a href="#">UI/UX</a>
-                            </li>
-                            <li>
-                              <a href="#">Web Design</a>
-                            </li>
-                            <li>
-                              <a href="#">Wordpress</a>
-                            </li>
-                            <li>
-                              <a href="#">Magento</a>
-                            </li>
-                          </ul>
+                          <img class="img-fluid" src="{% static 'images/user-profile.jpg' %}" alt="" />
                         </div>
                       </div>
                       <div class="col-lg-8">
-                        <div class="user-profile-name">john doe</div>
+                        <div class="user-profile-name">LOSIK Car Wash</div>
                         <div class="user-Location">
-                          <i class="ti-location-pin"></i> New York, New York</div>
-                        <div class="user-job-title">Product Designer</div>
+                          <i class="ti-location-pin"></i> Malang, Indonesia</div>
+                        <div class="user-job-title">Car Washing Service</div>
                         <div class="ratings">
                           <h4>Ratings</h4>
                           <div class="rating-star">
-                            <span>8.9</span>
+                            <span>4.2</span>
                             <i class="ti-star color-primary"></i>
                             <i class="ti-star color-primary"></i>
                             <i class="ti-star color-primary"></i>
                             <i class="ti-star color-primary"></i>
                             <i class="ti-star"></i>
                           </div>
-                        </div>
-                        <div class="user-send-message">
-                          <button class="btn btn-primary btn-addon" type="button">
-                            <i class="ti-email"></i>Send Message</button>
                         </div>
                         <div class="custom-tab user-profile-tab">
                           <ul class="nav nav-tabs" role="tablist">
@@ -202,21 +165,6 @@
                                 <div class="website-content">
                                   <span class="contact-title">Website:</span>
                                   <span class="contact-website">www.Admin Board.com</span>
-                                </div>
-                                <div class="skype-content">
-                                  <span class="contact-title">Skype:</span>
-                                  <span class="contact-skype">Admin Board</span>
-                                </div>
-                              </div>
-                              <div class="basic-information">
-                                <h4>Basic information</h4>
-                                <div class="birthday-content">
-                                  <span class="contact-title">Birthday:</span>
-                                  <span class="birth-date">January 31, 1990 </span>
-                                </div>
-                                <div class="gender-content">
-                                  <span class="contact-title">Gender:</span>
-                                  <span class="gender">Male</span>
                                 </div>
                               </div>
                             </div>

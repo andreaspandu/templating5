@@ -153,7 +153,11 @@
                                                         <td>
                                                             <select name="idpaketpelanggan" id="" class="form-control">
                                                                 {% for item in paket %}
-                                                                <option value="{{item.idpaketlayanan}}">{{allpemesananobj.idpaketpelanggan.jenispaket}}</option>
+                                                                    {% if item.idpaketlayanan == allpemesananobj.idpaketpelanggan.idpaketlayanan %}
+                                                                <option value="{{item.idpaketlayanan}}" selected>{{item.jenispaket}}</option>
+                                                                    {% else %}
+                                                                <option value="{{item.idpaketlayanan}}">{{item.jenispaket}}</option>
+                                                                    {% endif %}
                                                                 {% endfor %}
                                                             </select>
                                                         </td>

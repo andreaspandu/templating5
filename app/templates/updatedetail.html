@@ -134,7 +134,11 @@
                                                         <td>
                                                             <select name="idlayanan" id="" class='form-control'>
                                                                 {% for item in updatedetail %}
-                                                                <option value="{{item.idlayanan}}">{{detailobj.idlayanan.jenislayanan}}</option>
+                                                                    {% if item.jenislayanan == detailobj.idlayanan.jenislayanan %}
+                                                                <option value="{{item.idlayanan}}" selected>{{item.jenislayanan}}</option>
+                                                                    {% else %}
+                                                                <option value="{{item.idlayanan}}">{{item.jenislayanan}}</option>
+                                                                    {% endif %}
                                                                 {% endfor %}
                                                             </select>
                                                         </td>
