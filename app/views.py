@@ -9,10 +9,14 @@ from django.http import HttpResponse
 
 def home(request):
     totalpelanggan = models.pemesanan.objects.all().count()
-    pendapatan = models.pemesanan.objects.all()
+    jumlahpaket = models.paketlayanan.objects.all().count()
+    layanan = models.layanan.objects.all().count()
+    tes = models.detaillayanan.objects.all().count()
     return render(request, 'index.html', {
         'jumlah' : totalpelanggan,
-        'pendapatan' : pendapatan
+        'jumlahpaket' : jumlahpaket,
+        'layanan' : layanan,
+        'tes' : tes
     })
 
 
@@ -259,4 +263,6 @@ def bikinlayanan(request):
             jenislayanan = jenislayanan
         ).save()
         return redirect ('index')
+def profile(request):
+    return render(request, 'profile.html')
 # bikinlayanan masih bingung di idlayanan pas input itu masukin idnya ngambil dari mana, bikin baru kah atau gimana kah

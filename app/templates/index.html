@@ -87,7 +87,7 @@
                                     <div class="dropdown-content-body">
                                         <ul>
                                             <li>
-                                                <a href="#">
+                                                <a href="{% url 'profile' %}">
                                                     <i class="ti-user"></i>
                                                     <span>Profile</span>
                                                 </a>
@@ -131,19 +131,7 @@
                 <!-- /# row -->
                 <section id="main-content">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="stat-widget-one">
-                                    <div class="stat-icon dib"><i class="ti-money color-success border-success"></i>
-                                    </div>
-                                    <div class="stat-content dib">
-                                        <div class="stat-text">Jumlah Pendapatan</div>
-                                        <div class="stat-digit">{{ pendapatan.idpaketpelanggan.harga }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="card">
                                 <div class="stat-widget-one">
                                     <div class="stat-icon dib"><i class="ti-user color-primary border-primary"></i>
@@ -155,12 +143,40 @@
                                 </div>
                             </div>
                         </div>
-        
-                              <div class="col-lg-3">
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="stat-widget-one">
+                                    <div class="stat-icon dib"><i class="ti-layout-grid2 color-pink border-pink"></i>
+                                    </div>
+                                    <div class="stat-content dib">
+                                        <div class="stat-text">Jumlah Layanan</div>
+                                        <div class="stat-digit">{{layanan}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="stat-widget-one">
+                                    <div class="stat-icon dib"><i class="ti-link color-danger border-danger"></i>
+                                    </div>
+                                    <div class="stat-content dib">
+                                        <div class="stat-text">Jumlah Paket Layanan</div>
+                                        <div class="stat-digit">{{jumlahpaket}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                            
+                              <div class="col-sm-8">
                                 <div class="card">
+                                    <div class="card-title">
+                                        <h4></h4>
+                                    </div>
                                     <div class="card-toggle-body">
                                         <div class="button-list">
-                                            <a href="{% url 'createdata' %}" class="btn btn-primary">Tambah Pemesanan</a>
+                                            <a href="{% url 'createdata' %}" class="btn btn-primary col-lg-8" style="text-align:center">Tambah Pemesanan</a>
                                         </div>
                                     </div>
                                 </div>
