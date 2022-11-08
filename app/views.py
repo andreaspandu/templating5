@@ -45,12 +45,7 @@ def deletedetail(request, id):
     deletedetail.delete()
     return redirect('index')
 
-def invoice(request, id):
-    idinvoice = models.pemesanan.objects.get(idpemesanan = id)
-    if request.method == 'GET':
-        return render(request, 'invoice.html',{
-            'idinvoice' : idinvoice,
-    })
+
 
 def perbaruilayanan(request, id):
     layananobj = models.layanan.objects.get(idlayanan = id)
@@ -145,6 +140,28 @@ def index(request):
         'pemesanan' : data
     })
 
+def rekap (request):
+    data=[]
+    allpemesananobj = models.pemesanan.objects.all()
+    for item in allpemesananobj:
+        dummy = []
+        # print(item,'woy')
+        id_pemesanan = item.idpemesanan
+        specificdetail = models.detaillayanan.objects.filter(idpemesanan= id_pemesanan)
+        dummy.append(item)
+        dummy.append(specificdetail)
+        data.append(dummy)
+    return render (request, 'rekap.html', {
+        'pemesanan' : data
+    })
+
+def invoice(request, id):
+    idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
+    if request.method == 'GET':
+        return render(request, 'invoice.html',{
+            'idinvoice' : idinvoice,
+            
+    })
 def detaillayanan(request,id):
     detaillayananobj = models.detaillayanan.objects.filter(idpemesanan = id)
     alldetaillayananobj = models.detaillayanan.objects.all()
@@ -263,6 +280,7 @@ def bikinlayanan(request):
             jenislayanan = jenislayanan
         ).save()
         return redirect ('index')
+        
 def profile(request):
     return render(request, 'profile.html')
 # bikinlayanan masih bingung di idlayanan pas input itu masukin idnya ngambil dari mana, bikin baru kah atau gimana kah

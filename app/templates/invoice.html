@@ -46,7 +46,7 @@
                             <!--End Info-->
                             <div class="title">
                                 <h4>Invoice #{{idinvoice.idpemesanan}}</h4>
-                                <p>Issued: {{idinvoice.tanggalpesan}}
+                                <p>Issued: {{idinvoice.idpemesanan.tanggalpesan}}
                                 </p>
                             </div>
                             <!--End Title-->
@@ -59,8 +59,8 @@
 
                             <div class="clientlogo"></div>
                             <div class="invoice-info">
-                                <h2>{{idinvoice.nama}}</h2>
-                                <p>Plat Nomor<br> {{idinvoice.platnomor}}
+                                <h2>{{idinvoice.idpemesanan.nama}}</h2>
+                                <p>Plat Nomor<br> {{idinvoice.idpemesanan.platnomor}}
                                     <br>
                             </div>
 
@@ -79,10 +79,13 @@
                                     <table class="table">
                                         <tr class="tabletitle">
                                             <td class="table-item">
-                                                <h2>Jenis Layanan</h2>
+                                                <h2>Jenis Paket Layanan</h2>
                                             </td>
                                             <td class="Hours">
-                                                <h2>Keterangan</h2>
+                                                <h2>Keterangan Paket</h2>
+                                            </td>
+                                            <td class="Hours">
+                                                <h2>Tambahan Layanan</h2>
                                             </td>
                                             <td class="Rate">
                                                 <h2>Harga</h2>
@@ -94,16 +97,20 @@
                                         
                                         <tr class="service">
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpaketpelanggan.jenispaket }}</p>
+                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.jenispaket }}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpaketpelanggan.keteranganpaket}}</p>
+                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.keteranganpaket}}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpaketpelanggan.harga }}</p>
+                                                <p class="itemtext">{{idinvoice.idlayanan.jenislayanan}}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpaketpelanggan.harga }}</p>
+                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.harga }}</p>
+                                                <p class="itemtext">{{idinvoice.idlayanan.harga }}</p>
+                                            </td>
+                                            <td class="tableitem">
+                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.harga }}</p>
                                             </td>
                                         </tr>
 

@@ -55,7 +55,8 @@
                 <ul>
                     <li><a href="{% url 'tambahlayanan' %}">Tambah Layanan</a></li>
                     <li><a href="{% url 'tambahpaket' %}">Tambah Paket Layanan</a></li>
-                    <li><a href="#">Rekap Penjualan</a></li>
+                    <li><a href="{% url 'adddetaillayanan' %}">Tambah Detail Layanan</a></li>
+                    <li><a href="{% url 'rekap' %}">Rekap Penjualan</a></li>
                 </ul>
             </li>
                     
@@ -77,31 +78,16 @@
                     </div>
                     <div class="float-right">
                         <div class="dropdown dib">
-                            <div class="header-icon" data-toggle="dropdown">
-                                <span class="user-avatar">Admin
-                                    <i class="ti-angle-down f-s-10"></i>
-                                </span>
-                                <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                                    
-                                    <div class="dropdown-content-body">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="ti-user"></i>
-                                                    <span>Profile</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="header-icon">
+                                    <a class="ti-user" href="{% url 'profile' %}" >
+                                    </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
-
 
     <div class="content-wrap">
         <div class="main">
@@ -121,7 +107,6 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{% url 'detaillayanan' %}">Detail Layanan</a></li>
                                     <li class="breadcrumb-item active">Tambah Detail Layanan</li>
-                                    
                                 </ol>
                             </div>
                         </div>

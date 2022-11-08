@@ -23,5 +23,6 @@ urlpatterns = [
     path('deletedetail<str:id>', views.deletedetail, name='deletedetail'),
     path('invoice/<str:id>', views.invoice, name='invoice'),
     path('invoice', views.invoice, name='invoice'),
-    path('profile', views.profile, name='profile')
+    path('profile', views.profile, name='profile'),
+    path('rekap', views.rekap, name='rekap')
 ]
