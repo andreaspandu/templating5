@@ -159,8 +159,7 @@ def invoice(request, id):
     idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
     if request.method == 'GET':
         return render(request, 'invoice.html',{
-            'idinvoice' : idinvoice,
-            
+            'idinvoice' : idinvoice
     })
 def detaillayanan(request,id):
     detaillayananobj = models.detaillayanan.objects.filter(idpemesanan = id)
