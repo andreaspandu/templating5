@@ -10,6 +10,7 @@ from django.http import HttpResponse
 def home(request):
     totalpelanggan = models.pemesanan.objects.all().count()
     jumlahpaket = models.paketlayanan.objects.all().count()
+    jumlahpaket = int(jumlahpaket) -1
     layanan = models.layanan.objects.all().count()
     layanan = int(layanan) - 1
     tes = models.detaillayanan.objects.all().count()
@@ -158,9 +159,11 @@ def rekap (request):
 
 def invoice(request, id):
     idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
+    total = idinvoice.idpemesanan.idpaketpelanggan.harga + idinvoice.idlayanan.harga
     if request.method == 'GET':
         return render(request, 'invoice.html',{
             'idinvoice' : idinvoice,
+            'total' : total
             
     })
 def detaillayanan(request,id):
