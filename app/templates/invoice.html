@@ -27,18 +27,6 @@
     <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/lib/helper.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            var value;
-            var theTotal = 0
-            $("#tumbal").each(function() {
-                value = $(this).html();
-                theTotal = value;
-                $("#result").text(theTotal);
-            });
-        });
-    </script>
 </head>
 
 <body class="bg-primary">
@@ -52,7 +40,7 @@
                             <div class="invoice-logo"></div>
                             <div class="invoice-info">
                                 <h2>LOSIK CAR WASH</h2>
-                                <p> hello@Admin Board.com <br> +8801629599859
+                                <p> admin@losikcarwash.id<br> +62812182132
                                 </p>
                             </div>
                             <!--End Info-->
@@ -78,7 +66,7 @@
 
                             <div id="project">
                                 <h2>Nota Pembayaran</h2>
-                                <p>Proin cursus, dui non tincidunt elementum, tortor ex feugiat enim, at elementum enim quam vel purus. Curabitur semper malesuada urna ut suscipit.</p>
+                                
                             </div>
 
                         </div>
@@ -117,12 +105,12 @@
                                             <td class="tableitem">
                                                 <p class="itemtext">{{idinvoice.idlayanan.jenislayanan}}</p>
                                             </td>
-                                            <td class="tableitem" id="tumbal">
+                                            <td class="tableitem">
                                                 <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.harga }}</p>
                                                 <p class="itemtext">{{idinvoice.idlayanan.harga }}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext" id="result">{{ total }}</p>
+                                                <p class="itemtext">{{ total }}</p>
                                             </td>
                                         </tr>
 
