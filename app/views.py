@@ -157,23 +157,11 @@ def rekap (request):
     })
 
 def invoice(request, id):
-    data = []
-    invoiceobj = models.detaillayanan.objects.all()
-    data.append(invoiceobj)
-    if  len(data) == 0:
-        idinvoice = models.pemesanan.objects.get(idpemesanan = id)
-        total1 = idinvoice.idpaketpelanggan.harga
-        total = total1
-    else:
-        idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
-        total1 = idinvoice.idpemesanan.idpaketpelanggan.harga
-        total2 = idinvoice.idlayanan.harga
-        total = total1 + total2
-
+    idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
     if request.method == 'GET':
         return render(request, 'invoice.html',{
             'idinvoice' : idinvoice,
-            'total' : total
+            
     })
 def detaillayanan(request,id):
     detaillayananobj = models.detaillayanan.objects.filter(idpemesanan = id)
