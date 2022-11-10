@@ -11,6 +11,7 @@ def home(request):
     totalpelanggan = models.pemesanan.objects.all().count()
     jumlahpaket = models.paketlayanan.objects.all().count()
     layanan = models.layanan.objects.all().count()
+    layanan = int(layanan) - 1
     tes = models.detaillayanan.objects.all().count()
     return render(request, 'index.html', {
         'jumlah' : totalpelanggan,
@@ -156,8 +157,19 @@ def rekap (request):
     })
 
 def invoice(request, id):
-    idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
-    total = idinvoice.idpemesanan.idpaketpelanggan.harga + idinvoice.idlayanan.harga
+    data = []
+    invoiceobj = models.detaillayanan.objects.all()
+    data.append(invoiceobj)
+    if  len(data) == 0:
+        idinvoice = models.pemesanan.objects.get(idpemesanan = id)
+        total1 = idinvoice.idpaketpelanggan.harga
+        total = total1
+    else:
+        idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
+        total1 = idinvoice.idpemesanan.idpaketpelanggan.harga
+        total2 = idinvoice.idlayanan.harga
+        total = total1 + total2
+
     if request.method == 'GET':
         return render(request, 'invoice.html',{
             'idinvoice' : idinvoice,
