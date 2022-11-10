@@ -145,6 +145,7 @@ def index(request):
 def rekap (request):
     data=[]
     allpemesananobj = models.pemesanan.objects.all()
+    detailobj = models.detaillayanan.objects.all()
     for item in allpemesananobj:
         dummy = []
         # print(item,'woy')
@@ -153,8 +154,13 @@ def rekap (request):
         dummy.append(item)
         dummy.append(specificdetail)
         data.append(dummy)
+        for x in detailobj:
+            total1 = item.idpaketpelanggan.harga
+            total2 = x.idlayanan.harga
+            total = total1 + total2
     return render (request, 'rekap.html', {
-        'pemesanan' : data
+        'pemesanan' : data,
+        'total' : total
     })
 
 def invoice(request, id):
