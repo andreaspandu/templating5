@@ -131,8 +131,9 @@
                                                     <th>Harga</th>
                                                 </tr>
                                             </thead>
-                                            {% for item in pemesanan %}
+                                           
                                             <tbody>
+                                                {% for item in pemesanan %}
                                                 <tr>
                                                     <td>#{{ item.0.idpemesanan }}</td>
                                                     <td>{{ item.0.tanggalpesan }}</td>
@@ -143,10 +144,9 @@
                                                         <p>
                                                             {{x.idlayanan.jenislayanan}}
                                                         </p>
-                                                        
+                                                        {% endfor %}
                                                     </td>
-                                                    <td>{{total }}</td>
-                                                    {% endfor %}
+                                                    <td>{{item.0.idpaketpelanggan.harga}}{% for x in item.1 %}+{{x.idlayanan.harga}}{% endfor %}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>

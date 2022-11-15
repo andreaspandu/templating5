@@ -146,6 +146,9 @@ def rekap (request):
     data=[]
     allpemesananobj = models.pemesanan.objects.all()
     detailobj = models.detaillayanan.objects.all()
+    layananobj = models.layanan.objects.all()
+
+    totale = 0
     for item in allpemesananobj:
         dummy = []
         # print(item,'woy')
@@ -154,22 +157,46 @@ def rekap (request):
         dummy.append(item)
         dummy.append(specificdetail)
         data.append(dummy)
-        for x in detailobj:
-            total1 = item.idpaketpelanggan.harga
-            total2 = x.idlayanan.harga
-            total = total1 + total2
+    for x in detailobj:
+        total1 = x.idpemesanan.idpaketpelanggan.harga
+        totale += total1
+    total = specificdetail
+        # for x in specificdetail:
+            #total1 = x.idpemesanan.idpaketpelanggan.harga
+            # total = dummy
+    #idinvoice = models.detaillayanan.objects.filter(idpemesanan = id)
+    # for item in rekapobj:
+    #     total1 = item.idpemesanan.idpaketpelanggan.harga
+    #     # for x in detailobj:
+    #     #     total2 = x.idlayanan.harga
+    #     # total1.append(tes1)
+    #     # totale += totale
+    # total = total1
+    #         # total1 = item.idpaketpelanggan.harga
+            # total2 = x.idlayanan.harga
+            # total = total1 + total2
     return render (request, 'rekap.html', {
         'pemesanan' : data,
         'total' : total
     })
 
 def invoice(request, id):
-    idinvoice = models.detaillayanan.objects.get(idpemesanan = id)
-    total = idinvoice.idpemesanan.idpaketpelanggan.harga + idinvoice.idlayanan.harga
+    idinvoice = models.detaillayanan.objects.filter(idpemesanan = id)
+    idinvoiceobj = models.detaillayanan.objects.all()
+    tes = models.pemesanan.objects.get(idpemesanan=id)
+    totale = 0
+    for x in idinvoice:
+        total1 = x.idpemesanan.idpaketpelanggan.harga
+        # total1.append(tes1)
+        total2 = x.idlayanan.harga
+        totale += total2
+    total = totale + total1
+   # total = idinvoice.idpemesanan.idpaketpelanggan.harga + idinvoice.idlayanan.harga
     if request.method == 'GET':
         return render(request, 'invoice.html',{
             'idinvoice' : idinvoice,
-            'total' : total
+            'idinvoiceojb' : idinvoiceobj,
+             'total' : total
             
     })
 def detaillayanan(request,id):

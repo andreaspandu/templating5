@@ -129,14 +129,14 @@
                         <table id="row-select" class="display table table-borderd table-hover">
                             <tr>
                                 <th>ID Pemesanan</th>
-                                <th>ID Detail Layanan</th>
+                                <th>Nama Pelanggan</th>
                                 <th>Jenis Layanan</th>
                                 <th>Jenis Paket Pelanggan</th>
                             </tr>
                             {% for item in detail_layanan %}
                             <tr>
-                                <td>{{ item.idpemesanan_id }}</td>
-                                <td>{{ item.iddetaillayanan }}</td>
+                                <td>P_{{ item.idpemesanan_id }}</td>
+                                <td>{{ item.idpemesanan.nama}}</td>
                                 <td>{{ item.idlayanan.jenislayanan }}</td>
                                 <td>{{ item.idpemesanan.idpaketpelanggan.jenispaket }}</td>
                             

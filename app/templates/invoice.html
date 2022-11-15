@@ -45,8 +45,8 @@
                             </div>
                             <!--End Info-->
                             <div class="title">
-                                <h4>Invoice #{{idinvoice.idpemesanan}}</h4>
-                                <p>Issued: {{idinvoice.idpemesanan.tanggalpesan}}
+                                <h4>Invoice #{{idinvoice.0.idpemesanan}}</h4>
+                                <p>Issued: {{idinvoice.0.idpemesanan.tanggalpesan}}
                                 </p>
                             </div>
                             <!--End Title-->
@@ -59,8 +59,8 @@
 
                             <div class="clientlogo"></div>
                             <div class="invoice-info">
-                                <h2>{{idinvoice.idpemesanan.nama}}</h2>
-                                <p>Plat Nomor<br> {{idinvoice.idpemesanan.platnomor}}
+                                <h2>{{idinvoice.0.idpemesanan.nama}}</h2>
+                                <p>Plat Nomor<br> {{idinvoice.0.idpemesanan.platnomor}}
                                     <br>
                             </div>
 
@@ -84,9 +84,6 @@
                                             <td class="Hours">
                                                 <h2>Keterangan Paket</h2>
                                             </td>
-                                            <td class="Hours">
-                                                <h2>Tambahan Layanan</h2>
-                                            </td>
                                             <td class="Rate">
                                                 <h2>Harga</h2>
                                             </td>
@@ -97,20 +94,24 @@
                                         
                                         <tr class="service">
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.jenispaket }}</p>
+                                                <p class="itemtext">{{idinvoice.0.idpemesanan.idpaketpelanggan.jenispaket }}</p>
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.keteranganpaket}}</p>
+                                                <p class="itemtext">{{idinvoice.0.idpemesanan.idpaketpelanggan.keteranganpaket}}</p>
+                                                <p class="itemtext">Tambahan Layanan : 
+                                                {% for item in idinvoice %}
+                                                    <p class="itemtext">- {{item.idlayanan.jenislayanan}}</p></p>
+                                                {% endfor %}
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idlayanan.jenislayanan}}</p>
+                                                <p class="itemtext">Rp. {{idinvoice.0.idpemesanan.idpaketpelanggan.harga }},-</p>
+                                                <p class="itemtext"> ‎</p>
+                                                {% for item in idinvoice %}
+                                                <p class="itemtext"> Rp. {{item.idlayanan.harga }},-</p>
+                                                {% endfor %}
                                             </td>
                                             <td class="tableitem">
-                                                <p class="itemtext">{{idinvoice.idpemesanan.idpaketpelanggan.harga }}</p>
-                                                <p class="itemtext">{{idinvoice.idlayanan.harga }}</p>
-                                            </td>
-                                            <td class="tableitem">
-                                                <p class="itemtext">{{ total }}</p>
+                                                <p class="itemtext">Rp. {{ total }},-</p>
                                             </td>
                                         </tr>
 
