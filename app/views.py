@@ -141,6 +141,27 @@ def index(request):
     return render (request, 'pemesanan.html', {
         'pemesanan' : data
     })
+def generate(request):
+    if request.method =='GET':
+        return render(request, 'generate.html')
+    elif request.method =='POST':
+        data = []
+        mulai = request.POST['mulai']
+        akhir = request.POST['akhir']
+        tampil = models.pemesanan.objects.filter(tanggalpesan__range=(mulai,akhir))
+        for item in tampil:
+            dummy = []
+            # print(item,'woy')
+            id_pemesanan = item.idpemesanan
+            specificdetail = models.detaillayanan.objects.filter(idpemesanan= id_pemesanan)
+            dummy.append(item)
+            dummy.append(specificdetail)
+            data.append(dummy)
+        return render(request, 'rekap.html',{
+            'pemesanan' : data,
+            'mulai' : mulai,
+            'akhir' : akhir,
+    })
 
 def rekap (request):
     data=[]
@@ -179,6 +200,7 @@ def rekap (request):
         'pemesanan' : data,
         'total' : total
     })
+
 
 def invoice(request, id):
     idinvoice = models.detaillayanan.objects.filter(idpemesanan = id)
