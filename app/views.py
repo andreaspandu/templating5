@@ -8,6 +8,18 @@ from django.http import HttpResponse
 
 
 def home(request):
+     
+    total = []
+    tampil = models.pemesanan.objects.all()
+    for item in tampil:
+        id_pemesanan = item.idpemesanan
+        specificdetail = models.detaillayanan.objects.filter(idpemesanan= id_pemesanan)
+        for i in specificdetail:
+            tes = models.layanan.objects.get(idlayanan = i.idlayanan.idlayanan)
+            tes2 = models.paketlayanan.objects.get(idpaketlayanan = i.idpemesanan.idpaketpelanggan.idpaketlayanan)
+            total.append(tes.harga)
+            total.append(tes2.harga)
+    total = sum(total)
     totalpelanggan = models.pemesanan.objects.all().count()
     jumlahpaket = models.paketlayanan.objects.all().count()
     jumlahpaket = int(jumlahpaket) -1
@@ -18,7 +30,8 @@ def home(request):
         'jumlah' : totalpelanggan,
         'jumlahpaket' : jumlahpaket,
         'layanan' : layanan,
-        'tes' : tes
+        'tes' : tes,
+        'total' : total
     })
 
 
@@ -146,6 +159,7 @@ def generate(request):
         return render(request, 'generate.html')
     elif request.method =='POST':
         data = []
+        total = []
         mulai = request.POST['mulai']
         akhir = request.POST['akhir']
         tampil = models.pemesanan.objects.filter(tanggalpesan__range=(mulai,akhir))
@@ -157,10 +171,18 @@ def generate(request):
             dummy.append(item)
             dummy.append(specificdetail)
             data.append(dummy)
+            for i in specificdetail:
+                tes = models.layanan.objects.get(idlayanan = i.idlayanan.idlayanan)
+                tes2 = models.paketlayanan.objects.get(idpaketlayanan = i.idpemesanan.idpaketpelanggan.idpaketlayanan)
+                total.append(tes.harga)
+                total.append(tes2.harga)
+        jumlah = sum(total)
+        jumlah = total
         return render(request, 'rekap.html',{
             'pemesanan' : data,
             'mulai' : mulai,
             'akhir' : akhir,
+            'total' : total
     })
 
 def invoice(request, id):
